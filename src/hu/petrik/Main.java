@@ -47,6 +47,20 @@ public class Main {
     public static void masodikbejmod(){
         bejegyList.get(1).setTartalom(s.next());
     }
+    public static int legnepszerubbBejegy(){
+        int max=bejegyList.get(0).getLikeok();
+        for (int index = 0; index < bejegyList.size(); index++) {
+            if (bejegyList.get(index).getLikeok()> max) max= bejegyList.get(index).getLikeok();
+        }
+        return max;
+    }
+    public static boolean vanTobbMint35(){
+        boolean van =false;
+        for (Bejegyzes b:bejegyList) {
+            if(b.getLikeok()>35) van=true;
+        }
+        return van;
+    }
     public static void main(String[] args) {
         bejegyzes();
         beOlv("bejegyzesek.txt");
@@ -55,5 +69,10 @@ public class Main {
         for (Bejegyzes b:bejegyList) {
             System.out.println(b);
         }
+        System.out.print("\nA legnépszerűbb bejegyzés likejainak száma: ");
+        legnepszerubbBejegy();
+        if (vanTobbMint35()) System.out.println("\nVan több, mint 35 like egyetlen bejegyzésen.");
+        else System.out.println("Nincsen olyan bejegyzés amin több, mint 35 like van");
+
     }
 }
