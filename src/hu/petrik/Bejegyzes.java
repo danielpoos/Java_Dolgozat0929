@@ -1,6 +1,5 @@
 package hu.petrik;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Bejegyzes {
@@ -14,8 +13,9 @@ public class Bejegyzes {
         this.szerzo = szerzo;
         this.tartalom = tartalom;
         this.likeok = 0;
-        this.letrejott = LocalDateTime.now();
-        this.szerkesztve = LocalDateTime.now();
+        LocalDateTime timeNow = LocalDateTime.now();
+        this.letrejott = timeNow;
+        this.szerkesztve = timeNow;
     }
 
     public String getSzerzo() {
@@ -49,7 +49,7 @@ public class Bejegyzes {
     @Override
     public String toString() {
         if(szerkesztve != letrejott){
-        return szerzo + " - "+likeok +" - "+letrejott +
+            return szerzo + " - "+likeok +" - "+letrejott +
                 "\nSzerkesztve: " + szerkesztve +"\n" + tartalom+"\n";}
         else {
             return szerzo + " - "+likeok +" - "+letrejott +"\n" + tartalom+"\n";

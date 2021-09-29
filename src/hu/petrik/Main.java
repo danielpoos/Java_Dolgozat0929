@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -36,11 +37,23 @@ public class Main {
             f.close();
         }
         catch (IOException e){
-
+            System.out.println("Nem sikerült a beolvasás");
         }
+    }
+    public static void likesForSale(){
+        Random r = new Random();
+        for (int i = 0; i < bejegyList.size()*20; i++) bejegyList.get(r.nextInt(bejegyList.size())).like();
+    }
+    public static void masodikbejmod(){
+        bejegyList.get(1).setTartalom(s.next());
     }
     public static void main(String[] args) {
         bejegyzes();
         beOlv("bejegyzesek.txt");
+        likesForSale();
+        masodikbejmod();
+        for (Bejegyzes b:bejegyList) {
+            System.out.println(b);
+        }
     }
 }
